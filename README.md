@@ -29,7 +29,9 @@ Le jeu du Snake est un jeu classique où le joueur contrôle un serpent qui se d
    ```
 
 3. Installez les dépendances requises en exécutant la commande suivante :
-  _Soon_
+   ```shell
+   pip install requirements.txt
+   ```
   
 4. Exécutez le jeu en utilisant la commande suivante :
 
