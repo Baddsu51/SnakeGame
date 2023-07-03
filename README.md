@@ -25,7 +25,7 @@ Le jeu du Snake est un jeu classique où le joueur contrôle un serpent qui se d
 1. Clonez ce référentiel sur votre machine locale :
 
    ```shell
-   git clone https://github.com/votre_utilisateur/votre_projet.git
+   git clone https://github.com/Baddsu51/SnakeGame
    ```
 
 3. Installez les dépendances requises en exécutant la commande suivante :
