@@ -3,13 +3,18 @@ Gestionnaire de sons cross-platform utilisant pygame.mixer
 """
 
 import os
-from config import SOUND_EAT, SOUND_HIT
+from src.config import SOUND_EAT, SOUND_HIT
 
 
 class SoundManager:
     """
     Gère la lecture des effets sonores du jeu.
     Utilise pygame.mixer pour la compatibilité cross-platform.
+
+    Méthodes publiques:
+        - play_eat(): Joue le son quand le serpent mange une pomme
+        - play_hit(): Joue le son quand le serpent entre en collision
+        - cleanup(): Libère les ressources audio
     """
 
     def __init__(self):
@@ -17,10 +22,11 @@ class SoundManager:
         self._initialized = False
         self._sound_eat = None
         self._sound_hit = None
-        
+
         try:
             import pygame
-            pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=512)
+            pygame.mixer.init(frequency=22050, size=-
+                              16, channels=2, buffer=512)
             self._initialized = True
             self._load_sounds()
         except Exception as e:
@@ -31,22 +37,24 @@ class SoundManager:
         """Charge les fichiers audio en mémoire."""
         if not self._initialized:
             return
-            
+
         import pygame
-        
+
         # Charger le son de manger
         if os.path.exists(SOUND_EAT):
             try:
                 self._sound_eat = pygame.mixer.Sound(SOUND_EAT)
             except Exception as e:
-                print(f"Avertissement: Impossible de charger le son 'eat' - {e}")
-        
+                print(
+                    f"Avertissement: Impossible de charger le son 'eat' - {e}")
+
         # Charger le son de collision
         if os.path.exists(SOUND_HIT):
             try:
                 self._sound_hit = pygame.mixer.Sound(SOUND_HIT)
             except Exception as e:
-                print(f"Avertissement: Impossible de charger le son 'hit' - {e}")
+                print(
+                    f"Avertissement: Impossible de charger le son 'hit' - {e}")
 
     def play_eat(self):
         """Joue le son quand le serpent mange une pomme."""
