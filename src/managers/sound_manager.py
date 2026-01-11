@@ -29,7 +29,7 @@ class SoundManager:
                               16, channels=2, buffer=512)
             self._initialized = True
             self._load_sounds()
-        except Exception as e:
+        except (ImportError, AttributeError, pygame.error) as e:
             print(f"Avertissement: Impossible d'initialiser l'audio - {e}")
             self._initialized = False
 
@@ -44,7 +44,7 @@ class SoundManager:
         if os.path.exists(SOUND_EAT):
             try:
                 self._sound_eat = pygame.mixer.Sound(SOUND_EAT)
-            except Exception as e:
+            except (pygame.error, FileNotFoundError, OSError) as e:
                 print(
                     f"Avertissement: Impossible de charger le son 'eat' - {e}")
 
@@ -52,7 +52,7 @@ class SoundManager:
         if os.path.exists(SOUND_HIT):
             try:
                 self._sound_hit = pygame.mixer.Sound(SOUND_HIT)
-            except Exception as e:
+            except (pygame.error, FileNotFoundError, OSError) as e:
                 print(
                     f"Avertissement: Impossible de charger le son 'hit' - {e}")
 
@@ -61,7 +61,7 @@ class SoundManager:
         if self._initialized and self._sound_eat:
             try:
                 self._sound_eat.play()
-            except Exception:
+            except pygame.error:
                 pass
 
     def play_hit(self):
@@ -69,7 +69,7 @@ class SoundManager:
         if self._initialized and self._sound_hit:
             try:
                 self._sound_hit.play()
-            except Exception:
+            except pygame.error:
                 pass
 
     def cleanup(self):
@@ -78,5 +78,5 @@ class SoundManager:
             try:
                 import pygame
                 pygame.mixer.quit()
-            except Exception:
+            except (ImportError, pygame.error):
                 pass

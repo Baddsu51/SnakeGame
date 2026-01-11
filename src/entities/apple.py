@@ -28,7 +28,7 @@ class Apple:
     """
     Représente la pomme que le serpent doit manger.
     Inclut des animations de pulsation.
-    
+
     Méthodes publiques:
         - spawn(forbidden_positions: List[Tuple[float, float]]): Place la pomme à une nouvelle position aléatoire
         - get_position() -> Tuple[float, float]: Retourne la position actuelle de la pomme
@@ -95,7 +95,7 @@ class Apple:
             image.thumbnail(APPLE_SIZE)
             image.save(TEMP_APPLE_GIF)
             self._screen.register_shape(TEMP_APPLE_GIF)
-        except Exception as e:
+        except (FileNotFoundError, OSError, IOError) as e:
             print(
                 f"Avertissement: Impossible de charger l'image de la pomme - {e}")
             # Utiliser une forme par défaut
@@ -191,7 +191,7 @@ class Apple:
         # Continuer l'animation
         try:
             self._screen.ontimer(self._animate_pulse, APPLE_PULSE_SPEED)
-        except turtle.TurtleGraphicsError:
+        except (turtle.TurtleGraphicsError, RuntimeError):
             pass
 
     def stop_animation(self):

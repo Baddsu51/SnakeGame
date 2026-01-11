@@ -133,7 +133,7 @@ class Snake:
             self._screen.register_shape(TEMP_HEAD_EAST_GIF)
             self._screen.register_shape(TEMP_HEAD_WEST_GIF)
 
-        except Exception as e:
+        except (FileNotFoundError, OSError, IOError) as e:
             print(
                 f"Avertissement: Impossible de charger l'image de la tête - {e}")
 
@@ -144,7 +144,7 @@ class Snake:
             body_image.save(TEMP_BODY_GIF)
             self._screen.register_shape(TEMP_BODY_GIF)
 
-        except Exception as e:
+        except (FileNotFoundError, OSError, IOError) as e:
             print(
                 f"Avertissement: Impossible de charger l'image du corps - {e}")
 

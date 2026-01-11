@@ -84,7 +84,7 @@ class Game:
         # Charger l'image de fond
         try:
             screen.bgpic(GRID_IMAGE)
-        except turtle.TurtleGraphicsError as e:
+        except (turtle.TurtleGraphicsError, FileNotFoundError, OSError) as e:
             print(
                 f"Avertissement: Impossible de charger l'image de fond - {e}")
 
@@ -192,7 +192,7 @@ class Game:
                 "WM_DELETE_WINDOW",
                 self._quit_game
             )
-        except Exception:
+        except (AttributeError, RuntimeError):
             pass
 
     def _go_up(self):
@@ -435,7 +435,7 @@ class Game:
             self._snake.cleanup()
             self._apple.cleanup()
             self._animation_manager.cleanup()
-        except Exception:
+        except (turtle.TurtleGraphicsError, AttributeError, RuntimeError):
             pass
 
         print("Au revoir!")
