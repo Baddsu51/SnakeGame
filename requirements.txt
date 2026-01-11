@@ -1,2 +1,5 @@
-Pillow>=9.0.0
-pygame>=2.0.0
+# Image processing library for Snake Game
+Pillow==10.4.0
+
+# Game development library for audio support
+pygame==2.6.1
