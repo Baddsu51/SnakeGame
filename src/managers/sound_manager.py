@@ -5,6 +5,11 @@ Gestionnaire de sons cross-platform utilisant pygame.mixer
 import os
 from src.config import SOUND_EAT, SOUND_HIT
 
+try:
+    import pygame
+except ImportError:
+    pygame = None  # type: ignore
+
 
 class SoundManager:
     """
@@ -24,27 +29,26 @@ class SoundManager:
         self._sound_hit = None
 
         try:
-            import pygame
+            if pygame is None:
+                raise ImportError("pygame n'est pas disponible")
             pygame.mixer.init(frequency=22050, size=-
                               16, channels=2, buffer=512)
             self._initialized = True
             self._load_sounds()
-        except (ImportError, AttributeError, pygame.error) as e:
+        except (ImportError, AttributeError, Exception) as e:
             print(f"Avertissement: Impossible d'initialiser l'audio - {e}")
             self._initialized = False
 
     def _load_sounds(self):
         """Charge les fichiers audio en mémoire."""
-        if not self._initialized:
+        if not self._initialized or pygame is None:
             return
-
-        import pygame
 
         # Charger le son de manger
         if os.path.exists(SOUND_EAT):
             try:
                 self._sound_eat = pygame.mixer.Sound(SOUND_EAT)
-            except (pygame.error, FileNotFoundError, OSError) as e:
+            except (Exception, FileNotFoundError, OSError) as e:
                 print(
                     f"Avertissement: Impossible de charger le son 'eat' - {e}")
 
@@ -52,7 +56,7 @@ class SoundManager:
         if os.path.exists(SOUND_HIT):
             try:
                 self._sound_hit = pygame.mixer.Sound(SOUND_HIT)
-            except (pygame.error, FileNotFoundError, OSError) as e:
+            except (Exception, FileNotFoundError, OSError) as e:
                 print(
                     f"Avertissement: Impossible de charger le son 'hit' - {e}")
 
@@ -61,7 +65,7 @@ class SoundManager:
         if self._initialized and self._sound_eat:
             try:
                 self._sound_eat.play()
-            except pygame.error:
+            except Exception:
                 pass
 
     def play_hit(self):
@@ -69,14 +73,13 @@ class SoundManager:
         if self._initialized and self._sound_hit:
             try:
                 self._sound_hit.play()
-            except pygame.error:
+            except Exception:
                 pass
 
     def cleanup(self):
         """Libère les ressources audio."""
-        if self._initialized:
+        if self._initialized and pygame is not None:
             try:
-                import pygame
                 pygame.mixer.quit()
-            except (ImportError, pygame.error):
+            except Exception:
                 pass
