@@ -1,3 +1,2 @@
-turtle
-Pillow
-winsound
+Pillow>=9.0.0
+pygame>=2.0.0
