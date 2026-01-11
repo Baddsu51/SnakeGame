@@ -4,7 +4,20 @@
 
 Le jeu du Snake est un jeu classique où le joueur contrôle un serpent qui se déplace sur un plateau en essayant de manger des aliments pour grandir tout en évitant de se heurter aux bords du plateau ou de se mordre la queue. Ce projet implémente le jeu Snake en Python en utilisant le module Turtle pour les graphismes.
 
-![Aperçu du jeu](https://i.imgur.com/XYzYEzG.png)
+![Aperçu du jeu](assets/demo.gif)
+
+## 📖 À propos de ce projet
+
+Ce projet marque mes premiers pas dans le développement logiciel. Créé au début de mes études d'informatique, il représentait à l'époque un défi personnel pour tester ma logique de programmation et mes connaissances en Python.
+
+Plusieurs années plus tard, fort des compétences acquises durant mon cursus, j'ai décidé de revisiter ce projet pour le transformer et appliquer les bonnes pratiques apprises :
+
+- **Refonte architecturale** : Migration vers une architecture orientée objet modulaire
+- **Organisation du code** : Séparation claire des responsabilités avec une structure de dossiers cohérente
+- **Documentation** : Ajout de docstrings et de commentaires explicatifs
+- **Configuration centralisée** : Meilleure gestion des constantes et paramètres du jeu
+
+Cette refonte témoigne de mon évolution en tant que développeur. Bien que perfectible, ce projet illustre mon engagement à produire du code propre et maintenable, même pour un jeu simple développé initialement en quelques jours.
 
 ## Fonctionnalités
 
@@ -55,7 +68,7 @@ Le jeu du Snake est un jeu classique où le joueur contrôle un serpent qui se d
 4. Lancez le jeu :
 
    ```shell
-   python Snake_game.py
+   python main.py
    ```
 
 ### Méthode 2 : Exécutable Windows
@@ -74,28 +87,6 @@ Le jeu du Snake est un jeu classique où le joueur contrôle un serpent qui se d
 | Échap | Mettre en pause / Reprendre |
 | X | Quitter le jeu |
 
-## Structure du Projet
-
-```
-SnakeGame/
-├── assets/                 # Ressources du jeu
-│   ├── apple.png          # Image de la pomme
-│   ├── carre_arrondi.png  # Image du corps du serpent
-│   ├── grid.png           # Image de fond (grille)
-│   ├── head_snake.png     # Image de la tête du serpent
-│   ├── score.txt          # Sauvegarde du highscore
-│   └── *.wav              # Fichiers audio
-├── config.py              # Configuration et constantes
-├── sound_manager.py       # Gestion audio cross-platform
-├── score_manager.py       # Gestion des scores
-├── apple.py               # Classe Apple
-├── snake.py               # Classe Snake
-├── game.py                # Classe Game principale
-├── Snake_game.py          # Point d'entrée
-├── requirements.txt       # Dépendances Python
-└── README.md              # Ce fichier
-```
-
 ## Dépendances
 
 - **Pillow** : Manipulation des images PNG vers GIF pour Turtle
@@ -107,7 +98,7 @@ Pour créer un exécutable Windows avec PyInstaller :
 
 ```shell
 pip install pyinstaller
-pyinstaller --onefile --windowed --icon=assets/head_snake.ico --add-data "assets;assets" Snake_game.py
+pyinstaller --onefile --windowed --name SnakeGame main.py
 ```
 
 ## Licence
