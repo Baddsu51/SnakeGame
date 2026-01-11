@@ -18,7 +18,7 @@ Auteur: Baddsu51
 Version: 2.0 (refactorisation complète)
 """
 
-from game import Game
+from src.core.game import Game
 
 
 def main():
