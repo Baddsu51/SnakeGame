@@ -1,53 +1,57 @@
-# Snake Game : Jeu du Snake avec Turtle
+# Snake Game: Classic Snake Game with Turtle
 
-> Jeu du Snake classique implémenté en Python avec le module Turtle
+> Classic Snake game implemented in Python using the Turtle module
 
-Le jeu du Snake est un jeu classique où le joueur contrôle un serpent qui se déplace sur un plateau en essayant de manger des aliments pour grandir tout en évitant de se heurter aux bords du plateau ou de se mordre la queue. Ce projet implémente le jeu Snake en Python en utilisant le module Turtle pour les graphismes.
+The Snake game is a classic game where the player controls a snake moving across the board, trying to eat food to grow while avoiding hitting the board edges or biting its own tail. This project implements the Snake game in Python using the Turtle module for graphics.
 
-![Aperçu du jeu](assets/demo.gif)
+![Game Preview](assets/demo.gif)
 
-## 📖 À propos de ce projet
+## 🌐 Language Notice
 
-Ce projet marque mes premiers pas dans le développement logiciel. Créé au début de mes études d'informatique, il représentait à l'époque un défi personnel pour tester ma logique de programmation et mes connaissances en Python.
+**Note:** This project's codebase and in-game text are entirely in French, as it was developed as a personal learning project in a French-speaking context. While this README is provided in English for broader accessibility, the variable names, comments, and game interface remain in French.
 
-Plusieurs années plus tard, fort des compétences acquises durant mon cursus, j'ai décidé de revisiter ce projet pour le transformer et appliquer les bonnes pratiques apprises :
+## 📖 About This Project
 
-- **Refonte architecturale** : Migration vers une architecture orientée objet modulaire
-- **Organisation du code** : Séparation claire des responsabilités avec une structure de dossiers cohérente
-- **Documentation** : Ajout de docstrings et de commentaires explicatifs
-- **Configuration centralisée** : Meilleure gestion des constantes et paramètres du jeu
+This project marks my first steps in software development. Created at the beginning of my computer science studies, it represented at the time a personal challenge to test my programming logic and Python knowledge.
 
-Cette refonte témoigne de mon évolution en tant que développeur. Bien que perfectible, ce projet illustre mon engagement à produire du code propre et maintenable, même pour un jeu simple développé initialement en quelques jours.
+Several years later, armed with the skills acquired during my curriculum, I decided to revisit this project to transform it and apply the best practices I learned:
 
-## Fonctionnalités
+- **Architectural redesign**: Migration to a modular object-oriented architecture
+- **Code organization**: Clear separation of responsibilities with a coherent folder structure
+- **Documentation**: Addition of docstrings and explanatory comments
+- **Centralized configuration**: Better management of game constants and parameters
 
-- Affichage graphique du jeu avec Turtle
-- Contrôle du serpent avec les touches ZQSD ou les flèches directionnelles
-- Augmentation de la longueur du serpent en mangeant de la nourriture
-- Détection de collision avec les bords du plateau et le serpent lui-même
-- Affichage du score du joueur
-- Sauvegarde persistante du meilleur score (highscore)
-- Menu de pause (touche Échap)
-- Effets sonores (compatible Windows, macOS et Linux)
-- Architecture modulaire orientée objet
+This redesign demonstrates my evolution as a developer. While still perfectible, this project illustrates my commitment to producing clean and maintainable code, even for a simple game initially developed in just a few days.
 
-## Prérequis
+## Features
 
-- Python 3.8 ou supérieur
-- pip (gestionnaire de paquets Python)
+- Graphical display with Turtle
+- Snake control with ZQSD keys or arrow keys
+- Increasing snake length by eating food
+- Collision detection with board edges and the snake itself
+- Player score display
+- Persistent high score saving
+- Pause menu (Escape key)
+- Sound effects (compatible with Windows, macOS, and Linux)
+- Modular object-oriented architecture
+
+## Prerequisites
+
+- Python 3.8 or higher
+- pip (Python package manager)
 
 ## Installation
 
-### Méthode 1 : Depuis les sources
+### Method 1: From Source
 
-1. Clonez ce référentiel sur votre machine locale :
+1. Clone this repository to your local machine:
 
    ```shell
    git clone https://github.com/Baddsu51/SnakeGame
    cd SnakeGame
    ```
 
-2. (Optionnel) Créez un environnement virtuel :
+2. (Optional) Create a virtual environment:
 
    ```shell
    python -m venv venv
@@ -59,53 +63,53 @@ Cette refonte témoigne de mon évolution en tant que développeur. Bien que per
    source venv/bin/activate
    ```
 
-3. Installez les dépendances requises :
+3. Install the required dependencies:
 
    ```shell
    pip install -r requirements.txt
    ```
 
-4. Lancez le jeu :
+4. Launch the game:
 
    ```shell
    python main.py
    ```
 
-### Méthode 2 : Exécutable Windows
+### Method 2: Windows Executable
 
-1. Téléchargez le dernier [Release](https://github.com/Baddsu51/SnakeGame/releases)
-2. Exécutez `Snake_mainv3.exe`
+1. Download the latest [Release](https://github.com/Baddsu51/SnakeGame/releases)
+2. Run `Snake_mainv3.exe`
 
-## Contrôles
+## Controls
 
-| Touche | Action |
+| Key | Action |
 |--------|--------|
-| Z ou ↑ | Déplacer vers le haut |
-| S ou ↓ | Déplacer vers le bas |
-| Q ou ← | Déplacer vers la gauche |
-| D ou → | Déplacer vers la droite |
-| Échap | Mettre en pause / Reprendre |
-| X | Quitter le jeu |
-| Espace | Rejouer après Game Over |
+| Z or ↑ | Move up |
+| S or ↓ | Move down |
+| Q or ← | Move left |
+| D or → | Move right |
+| Esc | Pause / Resume |
+| X | Quit game |
+| Space | Replay after Game Over |
 
-## Dépendances
+## Dependencies
 
-- **Pillow** : Manipulation des images PNG vers GIF pour Turtle
-- **pygame** : Lecture des sons cross-platform
+- **Pillow**: PNG to GIF image manipulation for Turtle
+- **pygame**: Cross-platform sound playback
 
-## Création d'un exécutable
+## Building an Executable
 
-Pour créer un exécutable Windows avec PyInstaller :
+To create a Windows executable with PyInstaller:
 
 ```shell
 pip install pyinstaller
-pyinstaller --onefile --windowed --name SnakeGame main.py
+python -m PyInstaller SnakeGame.spec
 ```
 
-## Licence
+## License
 
-Ce projet est open source. Vous êtes libre de l'utiliser, le modifier et le distribuer.
+This project is open source. You are free to use, modify, and distribute it.
 
-## Auteur
+## Author
 
 **Baddsu51** - [GitHub](https://github.com/Baddsu51)
