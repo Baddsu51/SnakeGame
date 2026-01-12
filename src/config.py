@@ -21,6 +21,30 @@ def resource_path(relative_path: str) -> str:
     return os.path.join(base_path, relative_path)
 
 
+def get_user_data_path(filename: str) -> str:
+    """
+    Obtient le chemin pour sauvegarder les données utilisateur de manière persistante.
+    Utilise le dossier AppData sur Windows, .local/share sur Linux, et Application Support sur macOS.
+    """
+    if sys.platform == "win32":
+        # Windows: %APPDATA%\SnakeGame
+        app_data = os.getenv('APPDATA', os.path.expanduser('~'))
+        data_dir = os.path.join(app_data, 'SnakeGame')
+    elif sys.platform == "darwin":
+        # macOS: ~/Library/Application Support/SnakeGame
+        data_dir = os.path.join(os.path.expanduser(
+            '~'), 'Library', 'Application Support', 'SnakeGame')
+    else:
+        # Linux: ~/.local/share/SnakeGame
+        data_dir = os.path.join(os.path.expanduser(
+            '~'), '.local', 'share', 'SnakeGame')
+
+    # Créer le dossier s'il n'existe pas
+    os.makedirs(data_dir, exist_ok=True)
+
+    return os.path.join(data_dir, filename)
+
+
 # Dimensions de la fenêtre
 WINDOW_WIDTH = 800
 WINDOW_HEIGHT = 600
@@ -65,8 +89,8 @@ GRID_IMAGE = resource_path("./assets/images/grid.png")
 SOUND_EAT = resource_path("./assets/sounds/apple_munch_noice.wav")
 SOUND_HIT = resource_path("./assets/sounds/punch_whistle_noice.wav")
 
-# Fichier de score
-SCORE_FILE = resource_path("./assets/data/score.txt")
+# Fichier de score (persistant dans le dossier utilisateur)
+SCORE_FILE = get_user_data_path("highscore.txt")
 
 # Chemins des fichiers temporaires pour les images GIF
 TEMP_APPLE_GIF = os.path.join(TEMP_DIR, "snake_temp_apple.gif")
