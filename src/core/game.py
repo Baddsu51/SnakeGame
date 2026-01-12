@@ -242,6 +242,10 @@ class Game:
     def _quit_game(self):
         """Quitte le jeu proprement."""
         self._running = False
+        try:
+            self._screen.bye()
+        except (turtle.TurtleGraphicsError, AttributeError):
+            pass
 
     def _calculate_speed(self) -> int:
         """
