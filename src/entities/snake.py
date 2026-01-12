@@ -357,5 +357,6 @@ class Snake:
                 segment.clear()
             for t in self._trail_turtles:
                 t.hideturtle()
-        except turtle.TurtleGraphicsError:
+        except (turtle.TurtleGraphicsError, Exception):
+            # Ignorer toutes les erreurs liées à la destruction de la fenêtre
             pass

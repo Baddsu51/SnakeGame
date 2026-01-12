@@ -152,5 +152,6 @@ class ScoreManager:
         try:
             self._score_display.clear()
             self._highscore_display.clear()
-        except turtle.TurtleGraphicsError:
+        except (turtle.TurtleGraphicsError, Exception):
+            # Ignorer toutes les erreurs liées à la destruction de la fenêtre
             pass

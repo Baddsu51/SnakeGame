@@ -14,6 +14,10 @@ from src.config import (
     KEY_DOWN,
     KEY_LEFT,
     KEY_RIGHT,
+    KEY_ARROW_UP,
+    KEY_ARROW_DOWN,
+    KEY_ARROW_LEFT,
+    KEY_ARROW_RIGHT,
     KEY_PAUSE,
     KEY_QUIT,
     KEY_REPLAY,
@@ -50,6 +54,7 @@ class Game:
         self._countdown_active = False  # Indique si le compte à rebours est actif
         self._current_speed = SPEED_INITIAL
         self._game_loop_id = 0  # ID pour identifier la boucle de jeu active
+        self._window_closed = False  # Indique si la fenêtre a été fermée
 
         self._screen = self._setup_screen()  # Initialiser l'écran
 
@@ -153,7 +158,7 @@ class Game:
         self._controls_display.clear()
 
         # Contour noir plus subtil (1 pixel au lieu de 2)
-        text = "ZQSD : Déplacer | ESC : Pause | X : Quitter | ESPACE : Rejouer"
+        text = "ZQSD/Flèches : Déplacer | ESC : Pause | X : Quitter | ESPACE : Rejouer"
         font = ("Arial", 12, "normal")
 
         self._controls_display.color("black")
@@ -178,6 +183,12 @@ class Game:
         self._screen.onkeypress(self._go_down, KEY_DOWN)
         self._screen.onkeypress(self._go_left, KEY_LEFT)
         self._screen.onkeypress(self._go_right, KEY_RIGHT)
+
+        # Contrôles de direction (Flèches)
+        self._screen.onkeypress(self._go_up, KEY_ARROW_UP)
+        self._screen.onkeypress(self._go_down, KEY_ARROW_DOWN)
+        self._screen.onkeypress(self._go_left, KEY_ARROW_LEFT)
+        self._screen.onkeypress(self._go_right, KEY_ARROW_RIGHT)
 
         # Pause et quitter
         self._screen.onkey(self._toggle_pause, KEY_PAUSE)
@@ -242,6 +253,7 @@ class Game:
     def _quit_game(self):
         """Quitte le jeu proprement."""
         self._running = False
+        self._window_closed = True  # Marquer la fenêtre comme fermée
         try:
             self._screen.bye()
         except (turtle.TurtleGraphicsError, AttributeError):
@@ -432,14 +444,15 @@ class Game:
         # Sauvegarder le score
         self._score_manager.save_highscore()
 
-        # Nettoyer les composants
-        try:
-            self._sound_manager.cleanup()
-            self._score_manager.cleanup()
-            self._snake.cleanup()
-            self._apple.cleanup()
-            self._animation_manager.cleanup()
-        except (turtle.TurtleGraphicsError, AttributeError, RuntimeError):
-            pass
+        # Nettoyer les composants seulement si la fenêtre n'est pas déjà fermée
+        if not self._window_closed:
+            try:
+                self._sound_manager.cleanup()
+                self._score_manager.cleanup()
+                self._snake.cleanup()
+                self._apple.cleanup()
+                self._animation_manager.cleanup()
+            except (turtle.TurtleGraphicsError, AttributeError, RuntimeError):
+                pass
 
         print("Au revoir!")

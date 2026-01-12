@@ -84,6 +84,12 @@ KEY_RIGHT = "d"
 KEY_PAUSE = "Escape"
 KEY_QUIT = "x"
 
+# Touches fléchées (alternative)
+KEY_ARROW_UP = "Up"
+KEY_ARROW_DOWN = "Down"
+KEY_ARROW_LEFT = "Left"
+KEY_ARROW_RIGHT = "Right"
+
 # Directions
 DIRECTION_UP = "Up"
 DIRECTION_DOWN = "Down"

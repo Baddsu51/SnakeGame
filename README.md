@@ -22,7 +22,7 @@ Cette refonte témoigne de mon évolution en tant que développeur. Bien que per
 ## Fonctionnalités
 
 - Affichage graphique du jeu avec Turtle
-- Contrôle du serpent avec les touches ZQSD (clavier AZERTY)
+- Contrôle du serpent avec les touches ZQSD ou les flèches directionnelles
 - Augmentation de la longueur du serpent en mangeant de la nourriture
 - Détection de collision avec les bords du plateau et le serpent lui-même
 - Affichage du score du joueur
@@ -80,12 +80,13 @@ Cette refonte témoigne de mon évolution en tant que développeur. Bien que per
 
 | Touche | Action |
 |--------|--------|
-| Z | Déplacer vers le haut |
-| S | Déplacer vers le bas |
-| Q | Déplacer vers la gauche |
-| D | Déplacer vers la droite |
+| Z ou ↑ | Déplacer vers le haut |
+| S ou ↓ | Déplacer vers le bas |
+| Q ou ← | Déplacer vers la gauche |
+| D ou → | Déplacer vers la droite |
 | Échap | Mettre en pause / Reprendre |
 | X | Quitter le jeu |
+| Espace | Rejouer après Game Over |
 
 ## Dépendances
 

@@ -395,7 +395,8 @@ class AnimationManager:
             try:
                 popup.clear()
                 popup.hideturtle()
-            except turtle.TurtleGraphicsError:
+            except (turtle.TurtleGraphicsError, Exception):
+                # Ignorer toutes les erreurs liées à la destruction de la fenêtre
                 pass
         self._popup_turtles.clear()
 
@@ -403,19 +404,19 @@ class AnimationManager:
         for t in self._trail_turtles:
             try:
                 t.hideturtle()
-            except turtle.TurtleGraphicsError:
+            except (turtle.TurtleGraphicsError, Exception):
                 pass
 
         # Nettoyer le compte à rebours
         if self._countdown_turtle:
             try:
                 self._countdown_turtle.clear()
-            except turtle.TurtleGraphicsError:
+            except (turtle.TurtleGraphicsError, Exception):
                 pass
 
         # Nettoyer game over
         if self._game_over_turtle:
             try:
                 self._game_over_turtle.clear()
-            except turtle.TurtleGraphicsError:
+            except (turtle.TurtleGraphicsError, Exception):
                 pass

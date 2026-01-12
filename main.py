@@ -7,10 +7,10 @@ Un jeu Snake complet avec graphismes personnalisés, effets sonores
 et système de highscore persistant.
 
 Contrôles:
-    Z - Haut
-    S - Bas
-    Q - Gauche
-    D - Droite
+    Z / Flèche Haut - Haut
+    S / Flèche Bas - Bas
+    Q / Flèche Gauche - Gauche
+    D / Flèche Droite - Droite
     Échap - Pause
     X - Quitter
 

@@ -225,5 +225,6 @@ class Apple:
         try:
             self._turtle.hideturtle()
             self._turtle.clear()
-        except turtle.TurtleGraphicsError:
+        except (turtle.TurtleGraphicsError, Exception):
+            # Ignorer toutes les erreurs liées à la destruction de la fenêtre
             pass
